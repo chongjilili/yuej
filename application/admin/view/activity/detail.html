@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="__STATIC__/css/zui.css">
+		<link rel="stylesheet" href="__STATIC__/css/za.css">
+		
+	</head>
+
+	<body>
+		<div class="z-quote">行程详情</div>
+		<table border="1" class="table">
+			<tr>
+				<td>标题</td>
+				<td>{$activity.title}</td>
+			</tr>
+			<tr>
+				<td>发起者</td>
+				<td>{$activity.name}</td>
+			</tr>
+			<tr>
+				<td>出发地</td>
+				<td>{$activity.origin}</td>
+			</tr>
+			<tr>
+				<td>路线</td>
+				<td>{$activity.path}</td>
+			</tr><tr>
+				<td>风景图</td>
+				<td>
+					{volist name="pic" id="p"}
+					<img src="{$p.pic}" style="width: 200px;" alt="" /> 
+					{/volist}
+				</td>
+			</tr>
+			<tr>
+				<td>车型</td>
+				<td>{$activity.car_type}</td>
+			</tr>
+			<tr>
+				<td>内容</td>
+				<td>{$activity.details}</td>
+			</tr>
+			<tr>
+				<td>活动总人数</td>
+				<td>{$activity.number}</td>
+			</tr>
+			<tr>
+				<td>剩余人数</td>
+				<td>{$activity.anumber}</td>
+			</tr>
+			<tr>
+				<td>创建时间</td>
+				<td>{$activity.create_time}</td>
+			</tr>
+			<tr>
+				<td>活动开始时间</td>
+				<td>{$activity.start_time}</td>
+			</tr>
+			<tr>
+				<td>活动结束时间</td>
+				<td>{$activity.stop_time}</td>
+			</tr>
+			<tr>
+				<td>状态</td>
+				<td>
+					{if $activity.status==1}
+					已通过审核
+					{else /}
+					未审核
+					{/if}
+				</td>
+			</tr>
+		</table>
+		{if $activity.status==0}
+		<a href="{:url('admin/activity/check',['id'=>$activity.id])}" style="float:left;margin-top: 20px;margin-left: 20px;"><button class="btn btn-success">审核通过</button></a>
+		{/if}
+		<a href="{:url('admin/activity/activity')}" style="float: right;margin-top: 20px;margin-right: 20px;"><button class="btn btn-primary">返回上一页</button></a>
+	</body>
+
+</html>

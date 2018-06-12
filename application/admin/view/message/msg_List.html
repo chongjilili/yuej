@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="__STATIC__/css/zui.css">
+		<link rel="stylesheet" href="__STATIC__/css/za.css">
+	</head>
+<style type="text/css">
+	.pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}  
+.pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}  
+.pagination .active{background-color: #dd1a20;color: #fff;}  
+.pagination .disabled{color:#aaa;}  
+
+</style>
+	<body>
+		<div class="container">
+			<div class="z-quote">系统消息列表</div>
+			<a href="{:url('admin/message/add')}" style="float: right;"><button class="btn btn-primary">添加新的系统消息</button></a>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>标题</th>
+						<th>内容</th>
+						<th>创建时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				{volist name='list' id='l'}
+				<tbody>
+					<tr style="text-align: center;">
+						<td>{$l.id}</td>
+						<td>{$l.title}</td>
+						<td>{$l.content|raw}</td>
+						<td>{$l.create_time}</td>
+						<td>
+							<a href="{:url('admin/message/delMessage',['id'=>$l.id])}" onclick="return confirm('是否确认删除?');">删除</a>
+						</td>
+					</tr>
+				</tbody>
+				{/volist}
+			</table>
+			{$list|raw}
+		</div>
+	</body>
+
+</html>

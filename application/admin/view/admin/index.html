@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>约驾后台管理模板</title>
+		<link rel="stylesheet" href="__STATIC__/css/zui.css">
+		<link rel="stylesheet" href="__STATIC__/css/za.css">
+	</head>
+	<style type="text/css">
+		.logo {
+			position: relative
+		}
+		
+		.lo {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 20px;
+		}
+		
+		button {
+			width: 200px;
+			padding: 8px;
+			background-color: #428bca;
+			border-color: #357ebd;
+			color: #fff;
+			-moz-border-radius: 10px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
+			-khtml-border-radius: 10px;
+			text-align: center;
+			vertical-align: middle;
+			border: 1px solid transparent;
+			font-weight: 900;
+			font-size: 125%
+		}
+	</style>
+
+	<body>
+		<div class="head" style="padding-bottom: 10px;">
+			<div style="float: right;margin-top: 10px;margin-right: 10px;">
+				<a href="{:url('admin/admin/logout')}">
+					<button>退出</button>
+				</a>
+			</div>
+			<div class="logo">
+				<div class="lo"><span>约驾后台管理</span></div>
+			</div>
+		</div>
+
+		<div class="side">
+			<ul>
+				<li data="../user/userList">用户管理</li>
+				<li data="../activity/activity">行程管理</li>
+				<li data="../message/msgList">系统消息</li>
+			</ul>
+		</div>
+		<div class="main">
+			<iframe src="../activity/activity.html" frameborder="0"></iframe>
+		</div>
+		<script>
+			var lis = document.getElementsByTagName('li');
+			for(var i = 0; i < lis.length; i++) {
+				lis[i].onclick = function() {
+					document.getElementsByTagName('iframe')[0].setAttribute('src', this.getAttribute('data'))
+				}
+			}
+		</script>
+	</body>
+
+</html>

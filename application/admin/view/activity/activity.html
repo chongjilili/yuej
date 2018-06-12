@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="__STATIC__/css/zui.css">
+	<link rel="stylesheet" href="__STATIC__/css/za.css">
+</head>
+<style type="text/css">
+	.pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}  
+.pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}  
+.pagination .active{background-color: #dd1a20;color: #fff;}  
+.pagination .disabled{color:#aaa;}  
+
+</style>
+<body>
+	
+	<div class="container">
+		
+		<div class="z-quote">行程列表</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="120">发起人</th>
+					<th>联系方式</th>
+					<th>活动标题</th>
+					<th>参与人数</th>
+					<th>发起时间</th>
+					<th>是否满额</th>
+					<th>行程状态</th>
+					<th  width="80">查看</th>
+					<th  width="80">操作</th>
+				</tr>
+			</thead>
+			{volist name='list' id='l'}
+			<tbody style="text-align: center;">
+				<tr>
+					<td width="120">{$l.name}</td>
+					<td>{$l.wechat_id}</td>
+					<td>{$l.title}</td>
+					<td class="t-c">{$l.anumber}</td>
+					<td class="t-c">{$l.create_time}</td>
+					<td class="t-c">
+						{if !($l.anumber==0)}
+				        满额
+				        {else /}
+				        未满额
+				        {/if}
+					</td>
+					<td class="t-c">
+						{if $l.status == 1}
+						<span class="z-success">有效</span>
+						{else /}
+						<span class="z-note">无效</span>
+						{/if}
+					</td>
+					<td class="t-c" width="80"><a href="{:url('admin/activity/detail',['id'=>$l.id])}">详情</a></td>
+					<td class="t-c" width="80"><a href="{:url('activity/delActivity',['id'=>$l.id])}" onclick="return confirm('是否确认删除?');">删除</a></td>
+				</tr>
+			</tbody>
+			{/volist}
+		</table>
+		{$list|raw}
+	</div>
+</body>
+</html>

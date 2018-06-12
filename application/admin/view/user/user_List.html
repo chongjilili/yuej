@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="__STATIC__/css/zui.css">
+	<link rel="stylesheet" href="__STATIC__/css/za.css">
+</head>
+<style type="text/css">
+	.pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}  
+.pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}  
+.pagination .active{background-color: #dd1a20;color: #fff;}  
+.pagination .disabled{color:#aaa;}  
+
+</style>
+<body>
+	<div class="container">
+		<div class="z-quote">用户列表</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="120">用户名</th>
+					<th>微信号</th>
+					<th>昵称</th>
+					<th>性别</th>
+					<th  width="80">查看</th>
+				</tr>
+			</thead>
+			{volist name="user" id="u"}
+			<tbody style="text-align: center;">
+				<tr>
+					<td>
+						{$u.name}
+					</td>
+					<td>
+						{$u.wechat_id}
+					</td>
+					<td class="t-c">
+						{$u.nick_name}
+					</td>
+					<td class="t-c">
+						{$u.sex}
+					</td>
+					<td><a href="{:url('admin/user/userTake',['id'=>$u.id])}">他的参与</a></td>
+				</tr>
+			</tbody>
+			{/volist}
+		</table>
+		{$user|raw}
+	</div>
+</body>
+</html>

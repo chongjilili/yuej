@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="__STATIC__/css/zui.css">
+		<link rel="stylesheet" href="__STATIC__/css/za.css">
+		
+	</head>
+
+	<body>
+		<div class="z-quote">用户参与：{$user.name}</div>	
+		<table border="0" class="table">
+			
+			<thead>
+				<tr>
+					<th>活动标题</th>
+					<th>活动路线</th>
+					<th>出发地</th>
+					<th>活动内容</th>
+					<th  width="80">查看</th>
+				</tr>
+			</thead>
+			{volist name='take' id="l"}
+			<tbody style="text-align: center;">
+				<tr>
+					<td width="120">{$l.title}</td>
+					<td>{$l.path}</td>
+					<td>{$l.origin}</td>
+					<td class="t-c">{$l.details}</td>
+					<td class="t-c" width="80"><a href="{:url('admin/user/userTakeDetail',['id'=>$l.id,'uid'=>$user.id])}">详情</a></td>
+				</tr>
+			</tbody>
+			{/volist}
+		</table>
+		<a href="{:url('admin/user/userList')}" style="float: right;margin-top: 20px;margin-right: 20px;"><button class="btn btn-primary">返回上一页</button></a>
+	</body>
+</html>
